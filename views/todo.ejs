@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <script src="https://kit.fontawesome.com/0dadbc0850.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/todo.css">
+</head>
+<body>
+    <div class="maincontainer">
+   <div class="uppercontainer">
+    <h1>
+        <i class="fas fa-address-book"></i>
+      MY TODO APP 
+    </h1>
+    <div class="frm">
+        <form action="/action/create-todo" method="post">
+             <div class="des">
+             <p>Description</p>
+            <input type="text" class="txtdate" name="work" placeholder="what u wamt to do ?" required>
+            </div>
+            <div class="catdate">
+                <div class="cat">
+                    <p>category</p> 
+                    <select name="category" class="category">
+                        <option value="" disabled selected>choose a category</option>
+                      <option value="eating">eating</option>
+                      <option value="gym">gym</option>
+                      <option value="home">home</option>
+                      <option value="cleanning">cleanning</option>
+                      <option value="market">market</option>
+                      <option value="other">other</option>  
+                    </select>
+            </div>
+            
+         <div class="date">
+           <p>Date</p>
+          <input type="date" class="txtdate" name="date">
+         </div>
+    </div>
+  
+<div class="buttons">
+  <div class="btnleft">
+    <button type="submit" class="btn">
+      <i class="fas fa-plus"></i> <span>submit</span>
+  </button>
+  </div>
+  <div class="btnright">
+    <button type="submit" class="btn btncolor" form="chipform">
+      <i class="fas fa-trash"></i>
+      <span>Delete</span>
+    </button>
+  
+  </div>
+
+</div>
+
+
+        </form>
+</div>
+
+
+  <form action="/action/delete-todo" method="post" id="chipform">
+    <% for(let i of todo_list){%>
+     <div class="chips">
+       <div class="chipleft">
+        <input type="checkbox"  name="id" class="checkbox" value=<%=i.id%>>
+       </div>
+       <div class="chipmid">
+       <div class="midl">
+        <p class="work"><%=i.work%></p>
+        <span class="calendar"><i class="fas fa-calendar"></i></span>
+        <p class="pdate"><%=i.date%></p>
+       </div>
+  
+        <div class="midr from-left" style="background-color: <%=clist[i.category]%>;">
+          <p><%=i.category%></p>
+        </div>
+
+       </div>
+    
+     </div>
+
+     <%}%>
+
+  </form>
+
+
+
+
+    </div>
+    <script src="/js/todo.js"></script>
+</body>
+
+</html>
