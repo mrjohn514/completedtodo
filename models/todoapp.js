@@ -17,7 +17,8 @@ date:{
 
 
 })
-
+//we need to tell what would be the name of collection using this schema and so Todo is the name of
+//collection in database
 const Todo = mongoose.model('todo',todoschema);
 
 module.exports=Todo;

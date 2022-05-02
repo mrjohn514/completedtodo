@@ -14,5 +14,7 @@ router.get('/', homeController.home);
 // Route all requests starting with '/action' to action.js file
 router.use('/action', require('./action'));
 
+router.use('/user',require('./user'));
+
 // Exporting router
 module.exports = router;
