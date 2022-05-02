@@ -1,7 +1,21 @@
 const express = require('express');
+
+//for reading and writing into cookies we are using library called cookie parser
+//step 1 : npm install cookie-parser
+//step 2: require the cookie-pareser library 
+
+
+const cookieParser=require('cookie-parser');
+
 const port = 8000;
 
 const app = express();
+
+//we have to tell the app to use cookie parsr and we know the place to change the  upcoming data through req
+//can be alterd in middleware so 
+app.use(cookieParser());
+
+
 
 // Redirect all to index.js inside routes directory
 app.use('/', require('./routes'));

@@ -13,8 +13,12 @@ var color_list={
   
 module.exports.home=function(req , res){
 
+console.log(req.cookies);
 
-  
+//altering the user_id cookie to value 25 by res.cookie //altering the data of cookies came through req
+res.cookie('user_id',25);
+
+
   todo.find({},function(err,todos){      
 if(err)
 {
