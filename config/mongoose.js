@@ -1,8 +1,8 @@
 //require library
 const mongoose = require('mongoose');
 
-//connext to the database
-mongoose.connect('mongodb://localhost/contact_list_db');
+//connext to the database //when u write this line codeial_env name  database is created in mongodb 
+mongoose.connect('mongodb://localhost/codeial_env');
 
 //acquire the connection to check it is succesful or not
 const db=mongoose.connection;
