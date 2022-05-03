@@ -38,6 +38,19 @@ module.exports.profile=function(req,res){
 }
 
 
+
+module.exports.logout=function(req,res)
+{
+  res.clearCookie("user_id");
+  return res.redirect('/user/signin');
+}
+
+
+
+
+
+
+
 module.exports.signup=function(req,res){
 return res.render('user_signup',{
     title:"codeial signup"
