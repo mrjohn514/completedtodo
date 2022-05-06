@@ -55,7 +55,10 @@ module.exports.createuser=function(req,res)
 
 }
 
+//sign in and create sesion for user
+
+//when passport use fxn localstrategy to authenticate the user the control comes over here  
 module.exports.createsession=function(req,res)
 {
-    //todo
+    return res.redirect('/');
 }

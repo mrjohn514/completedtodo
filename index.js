@@ -9,6 +9,12 @@ const cookieParser=require('cookie-parser');
 
 const port = 8000;
 
+//adding library express session for encrypting cookies
+const session =require('express-session');
+const passport = require('passport');
+const passportlocal=require('./config/passport-local-strategy');
+
+
 const app = express();
 
 //we have to tell the app to use cookie parsr and we know the place to change the  upcoming data through req
@@ -17,13 +23,38 @@ app.use(cookieParser());
 
 
 
-// Redirect all to index.js inside routes directory
-app.use('/', require('./routes'));
-
 // Setting view engine as ejs
 app.set('view engine', 'ejs');
 // Setting path for views
 app.set('views', './views');
+
+
+
+
+//setting the middleware that will takes in the session cookies and encrypt it
+
+app.use(session({
+  name:'codeial',  ///name of cookie
+ secret: 'blahsomething',            //whenever encryption happen ther is key to encode and decode    
+saveUninitialized:false,  //whenever thre is req which is not initialised ->means when teh user is not loged in identity is not establish
+//so i dont want to store extra data so set to false
+
+resave:false,  //when the identity is established or some sort of session data/user info is present then do i want to save that data again ->no so false
+cookie:{
+    maxAge:(1000*60*100)      //for how much millisec cookie live
+}
+
+}))
+
+//telling app to use passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//also have to put routes after these
+// Redirect all to index.js inside routes directory
+app.use('/', require('./routes'));
+ 
+
 
 
 // to use static files, present in assets directory
