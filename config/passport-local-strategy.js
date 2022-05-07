@@ -68,6 +68,43 @@ return done(null,user);
 
 });
 
+
+///////////////////////similar thing we doing in profile controler
+
+
+///check if user is authenticated to view that page //basically user is signed in or not
+passport.checkAuthentication =function(req,res,next)
+{
+ 
+ //how do i find req localhost:8000/user/userprofile is authenticated or not so passport aded a method in req isAuthenticated   
+
+ //if user is signed in/authenticated let him view the page/pass him to that page
+ if(req.isAuthenticated()){
+     return next();    //if user is signed in then pass on the req to function (controller action)    
+ }
+
+//if user is not authenticated/signed in 
+return res.redirect('/user/signin');
+
+}
+
+
+passport.setAuthenticatedUser =function(req,res,next)
+{
+ //req.user contain the cureent signed user form session cookie and we are sending this to locals to use in views
+ //similar we are doing in profile controler vuser:user   
+    if(req.isAuthenticated())
+    {
+    res.locals.user=req.user  //whenever a  user is signed in that user info is available in req.user 
+   }
+
+    return next();
+}
+
+
+
+
+
 module.exports=passport;
 
 

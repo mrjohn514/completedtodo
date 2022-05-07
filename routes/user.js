@@ -9,6 +9,13 @@ const userController = require('../controllers/user_controller');
 
 router.use(express.urlencoded({ extended: true }));
 
+//using passport middleware to authenticate/ basically checking user is signed in or not using the fucntin created
+//in pasportlocalstrategy checkauthencation
+
+//before going to this route this checkautehnctication called if ok then next in function 
+//called to controler of profile 
+router.get('/userprofile',passport.checkAuthentication,userController.profile);
+
 router.get('/signup',userController.signup)
 
 router.get('/signin',userController.signin);

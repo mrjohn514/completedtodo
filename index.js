@@ -50,6 +50,15 @@ cookie:{
 app.use(passport.initialize());
 app.use(passport.session());
 
+//whenever this function is called it will check wheather a sesssion cookie is present or not
+//if present then it will set the 
+// user will be set in locals ;
+
+//so whenever app is intialised this is also called (automatically called as midllware)
+//so whenver any req is called in then this is called andd  
+app.use(passport.setAuthenticatedUser);
+
+
 //also have to put routes after these
 // Redirect all to index.js inside routes directory
 app.use('/', require('./routes'));
