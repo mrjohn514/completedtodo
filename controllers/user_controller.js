@@ -13,6 +13,11 @@ module.exports.profile=function(req,res)
 
 
 module.exports.signup=function(req,res){
+
+    //checking if user is authenitcaed/signedin then redirect to profile
+if(req.isAuthenticated()){
+return res.redirect('/user/userprofile');
+}
 return res.render('user_signup',{
     title:"codeial signup"
 })
@@ -21,6 +26,11 @@ return res.render('user_signup',{
 
 module.exports.signin=function(req,res)
 {
+
+     //checking if user is authenitcaed/signedin then redirect to profile
+    if(req.isAuthenticated()){
+    return res.redirect('/user/userprofile');
+    }
     return res.render("user_signin",{
         title:"codeial | signin"
     })

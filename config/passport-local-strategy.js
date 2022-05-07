@@ -102,6 +102,17 @@ passport.setAuthenticatedUser =function(req,res,next)
 }
 
 
+//my way to restrict render signin and signup again 
+// passport.checkAuthentication2 =function(req,res,next)
+// {
+//  if(req.isAuthenticated())
+//  {
+//     return res.redirect('/user/userprofile');
+//  } 
+
+//  return next();
+// }
+
 
 
 
