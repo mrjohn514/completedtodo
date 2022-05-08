@@ -32,7 +32,7 @@ router.post('/create_user',userController.createuser);
 //other wsie failureredirect to signin again
 
 router.post('/create_session',passport.authenticate(
-'local',
+'local',                                               //local strategy
 {failureRedirect:'/user/signin'}
 
 ),userController.createsession)

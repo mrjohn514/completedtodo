@@ -9,11 +9,15 @@ const cookieParser=require('cookie-parser');
 
 const port = 8000;
 
+const db= require('./config/mongoose')
+
 //adding library express session for encrypting cookies
 const session =require('express-session');
 const passport = require('passport');
 const passportlocal=require('./config/passport-local-strategy');
 
+//requiring connectmongo libraray to store sessions in mongodb 
+const MongoStore= require('connect-mongo');
 
 const app = express();
 
@@ -42,7 +46,8 @@ saveUninitialized:false,  //whenever thre is req which is not initialised ->mean
 resave:false,  //when the identity is established or some sort of session data/user info is present then do i want to save that data again ->no so false
 cookie:{
     maxAge:(1000*60*100)      //for how much millisec cookie live
-}
+},
+store: MongoStore.create({ mongoUrl: 'mongodb://localhost/codeial_env' })   //adding store property as mongostore
 
 }))
 

@@ -5,6 +5,8 @@ const User=require('../models/user')
 
 module.exports.profile=function(req,res)
 {
+    console.log(req.session);
+    console.log(req.user);
     return res.render('user_profile',{
         title:'profile'
     })

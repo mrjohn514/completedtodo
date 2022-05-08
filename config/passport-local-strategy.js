@@ -24,7 +24,7 @@ usernameField:'email'                //how do i detect which is the user //so us
 },function(email,password,done){ 
     //find a user and establish the identity    
 
-User.findOne({email,email},function(err,user){       //findone({this email from User/collection, this is passed email in function line 23})
+User.findOne({email:email},function(err,user){       //findone({this email from User/collection, this is passed email in function line 23})
 if(err){console.log("error in finding user"); 
 return done(err);             
 //done(error,authentication done or not) //as js fxn can receive less arguments also so writen like this
@@ -93,7 +93,7 @@ passport.setAuthenticatedUser =function(req,res,next)
 {
  //req.user contain the cureent signed user form session cookie and we are sending this to locals to use in views
  //similar we are doing in profile controler vuser:user   
-    if(req.isAuthenticated())
+    if(req.isAuthenticated())   //isAuthenticated is basically checking does req.session.passport.user is null or not
     {
     res.locals.user=req.user  //whenever a  user is signed in that user info is available in req.user 
    }
