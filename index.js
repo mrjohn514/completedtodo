@@ -21,10 +21,17 @@ const MongoStore= require('connect-mongo');
 
 const app = express();
 
+
+const expresslayouts=require('express-ejs-layouts');
+
 //we have to tell the app to use cookie parsr and we know the place to change the  upcoming data through req
 //can be alterd in middleware so 
 app.use(cookieParser());
 
+app.use(expresslayouts);  
+
+app.set('layout extractStyles',true);
+app.set('layout extractscripts',true);
 
 
 // Setting view engine as ejs

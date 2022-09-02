@@ -28,7 +28,8 @@ if(err)
 return res.render('todo',{                    
     todo_list:todos,
     title:"my Todo list",
-    clist:color_list
+    clist:color_list,
+    layout:  false
   });
 
 

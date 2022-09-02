@@ -21,7 +21,8 @@ if(req.isAuthenticated()){
 return res.redirect('/user/userprofile');
 }
 return res.render('user_signup',{
-    title:"codeial signup"
+    title:"codeial signup",
+    layout:  false
 })
 }
 
@@ -34,9 +35,26 @@ module.exports.signin=function(req,res)
     return res.redirect('/user/userprofile');
     }
     return res.render("user_signin",{
-        title:"codeial | signin"
+        title:"codeial | signin",
+        layout:  false
     })
 }
+
+
+
+module.exports.deletesession=function(req,res)
+{
+req.logout();         //this is definde in passport which will delete the req.sesseion.passport.user and hence singed out
+
+return res.redirect('/user/signin');
+
+}
+
+
+
+
+
+
 
 
 module.exports.createuser=function(req,res)
